@@ -14,7 +14,7 @@ require("dotenv").config();
 
 const { APP_USER, APP_USER_PASSWORD } = process.env;
 
-if (!config.get("jwtPrivateKey")) {
+if (!process.env.jwtPrivateKey) {
   console.log("FATAL ERROR: jwtPrivateKey is not defined");
   process.exit(1);
 }
@@ -40,7 +40,7 @@ app.use("/api/answers", answers);
 app.use("/api/users", users);
 app.use("/api/auth", auth);
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 5500;
 if (process.env.NODE_ENV == "production") {
   app.use(express.static("client/build"));
 
